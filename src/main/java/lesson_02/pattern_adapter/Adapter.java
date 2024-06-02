@@ -1,14 +1,10 @@
 package lesson_02.pattern_adapter;
 
-import lombok.extern.slf4j.Slf4j;
-
-@Slf4j
 public class Adapter {
     public static void main(String[] args) {
         AmericanSocket americanSocket = new SimpleAmericanSocket();
         Radio radio = new Radio();
         EuroSocket euroSocket = new SocketAdapter(americanSocket);
-
         radio.listenMusic(euroSocket);
     }
 }
