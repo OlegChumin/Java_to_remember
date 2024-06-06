@@ -30,8 +30,8 @@ public class AdvancedTask {
         );
         
         OptionalDouble averageSalary = employees.stream()
-                                                .filter(e -> e.name.startsWith("J"))
-                                                .mapToDouble(e -> e.salary)
+                                                .filter(employee -> employee.name.startsWith("J"))
+                                                .mapToDouble(employee -> employee.salary)
                                                 .average();
         
         averageSalary.ifPresent(average -> System.out.println("Средняя зарплата сотрудников, имя которых начинается на 'J': " + average));
