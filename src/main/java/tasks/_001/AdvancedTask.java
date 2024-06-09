@@ -24,7 +24,7 @@ public class AdvancedTask {
         List<Employee> employees = Arrays.asList(
             new Employee("John", 2000),
             new Employee("Jane", 2100),
-            new Employee("Mark", 1850),
+            new Employee("Mark", 0),
             new Employee("James", 1980),
             new Employee("Jennifer", 2150)
         );
@@ -33,7 +33,18 @@ public class AdvancedTask {
                                                 .filter(employee -> employee.name.startsWith("J"))
                                                 .mapToDouble(employee -> employee.salary)
                                                 .average();
+
         
         averageSalary.ifPresent(average -> System.out.println("Средняя зарплата сотрудников, имя которых начинается на 'J': " + average));
+
+        System.out.println(getAvgSalary(employees));
+    }
+
+    public static double getAvgSalary(List<Employee> employees) {
+        return employees.stream()
+                .filter(e -> e.name.startsWith("J"))
+                .mapToDouble(employee -> employee.salary)
+                .average()
+                .orElseThrow();
     }
 }
